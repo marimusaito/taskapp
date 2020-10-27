@@ -29,13 +29,20 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6HJ-N3-tKT">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6HJ-N3-tKT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Hdc-HU-YAi"/>
+                            <constraint firstItem="8O7-CY-Xcp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LBo-fG-hm4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8O7-CY-Xcp" secondAttribute="bottom" id="RO8-4C-Zge"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8O7-CY-Xcp" secondAttribute="trailing" id="bqj-gO-zo8"/>
-                            <constraint firstItem="8O7-CY-Xcp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dRt-Bh-eP7"/>
                             <constraint firstItem="8O7-CY-Xcp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hYm-VI-3Ut"/>
+                            <constraint firstItem="6HJ-N3-tKT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="mZe-BG-nud"/>
+                            <constraint firstItem="6HJ-N3-tKT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oMp-T7-NPK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -50,6 +57,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="TableView" destination="8O7-CY-Xcp" id="7Nc-Xz-mdW"/>
+                        <outlet property="searchBar" destination="6HJ-N3-tKT" id="IBb-jV-Z9I"/>
                         <segue destination="XKF-BP-HDH" kind="show" identifier="cellSegue" id="Xdb-CV-I4d"/>
                     </connections>
                 </viewController>
@@ -99,20 +107,37 @@
                                     <constraint firstAttribute="height" constant="120" id="HdN-hH-eeR"/>
                                 </constraints>
                             </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNF-AO-fOs">
+                                <rect key="frame" x="10" y="464" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iHL-Yj-3ZZ">
+                                <rect key="frame" x="10" y="495" width="394" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="TNF-AO-fOs" firstAttribute="top" secondItem="vWX-js-lPG" secondAttribute="bottom" constant="10" id="4y8-eP-HjE"/>
+                            <constraint firstItem="TNF-AO-fOs" firstAttribute="leading" secondItem="5VP-yd-tHN" secondAttribute="leading" constant="10" id="8tH-vG-X63"/>
                             <constraint firstItem="J9B-b4-Hun" firstAttribute="leading" secondItem="5VP-yd-tHN" secondAttribute="leading" constant="10" id="Alh-qL-z77"/>
                             <constraint firstItem="dxY-Vm-JXc" firstAttribute="top" secondItem="J9B-b4-Hun" secondAttribute="bottom" constant="10" id="C3M-65-OSv"/>
                             <constraint firstItem="5VP-yd-tHN" firstAttribute="trailing" secondItem="dxY-Vm-JXc" secondAttribute="trailing" constant="10" id="DHh-tX-Tv8"/>
                             <constraint firstItem="82b-Xl-CG9" firstAttribute="leading" secondItem="5VP-yd-tHN" secondAttribute="leading" constant="10" id="EBF-Q3-RrY"/>
+                            <constraint firstItem="5VP-yd-tHN" firstAttribute="trailing" secondItem="TNF-AO-fOs" secondAttribute="trailing" constant="10" id="HU7-l7-dqx"/>
+                            <constraint firstItem="iHL-Yj-3ZZ" firstAttribute="top" secondItem="TNF-AO-fOs" secondAttribute="bottom" constant="10" id="I81-YG-a2E"/>
                             <constraint firstItem="dxY-Vm-JXc" firstAttribute="leading" secondItem="5VP-yd-tHN" secondAttribute="leading" constant="10" id="KSm-Gd-UMU"/>
                             <constraint firstItem="J9B-b4-Hun" firstAttribute="top" secondItem="82b-Xl-CG9" secondAttribute="bottom" constant="10" id="Mrc-2G-lLV"/>
                             <constraint firstItem="5VP-yd-tHN" firstAttribute="trailing" secondItem="J9B-b4-Hun" secondAttribute="trailing" constant="10" id="NVf-M8-9Hk"/>
+                            <constraint firstItem="iHL-Yj-3ZZ" firstAttribute="leading" secondItem="5VP-yd-tHN" secondAttribute="leading" constant="10" id="VjW-w6-6iq"/>
                             <constraint firstItem="82b-Xl-CG9" firstAttribute="top" secondItem="5VP-yd-tHN" secondAttribute="top" constant="10" id="axv-bj-Juj"/>
                             <constraint firstItem="5VP-yd-tHN" firstAttribute="trailing" secondItem="Cgc-On-N0O" secondAttribute="trailing" constant="10" id="bCF-hx-kdz"/>
                             <constraint firstItem="Cgc-On-N0O" firstAttribute="top" secondItem="dxY-Vm-JXc" secondAttribute="bottom" constant="10" id="d9W-EW-yZB"/>
                             <constraint firstAttribute="trailing" secondItem="vWX-js-lPG" secondAttribute="trailing" id="fox-b0-gz2"/>
+                            <constraint firstItem="5VP-yd-tHN" firstAttribute="trailing" secondItem="iHL-Yj-3ZZ" secondAttribute="trailing" constant="10" id="jR5-02-Jq9"/>
                             <constraint firstItem="vWX-js-lPG" firstAttribute="top" secondItem="Cgc-On-N0O" secondAttribute="bottom" constant="10" id="jq0-7e-Rj3"/>
                             <constraint firstItem="5VP-yd-tHN" firstAttribute="trailing" secondItem="82b-Xl-CG9" secondAttribute="trailing" constant="10" id="uhv-fr-GtB"/>
                             <constraint firstItem="Cgc-On-N0O" firstAttribute="leading" secondItem="5VP-yd-tHN" secondAttribute="leading" constant="10" id="vQl-rr-HmH"/>
@@ -122,6 +147,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Lru-LH-joR"/>
                     <connections>
+                        <outlet property="category" destination="iHL-Yj-3ZZ" id="bTE-gz-hBf"/>
                         <outlet property="contentsTextView" destination="Cgc-On-N0O" id="Bl8-ky-uEk"/>
                         <outlet property="datePicker" destination="vWX-js-lPG" id="jFe-xM-VTh"/>
                         <outlet property="titleTextField" destination="J9B-b4-Hun" id="rbX-AV-QfA"/>
@@ -129,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="brZ-Fe-beq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1845" y="117"/>
+            <point key="canvasLocation" x="1844.9275362318842" y="116.51785714285714"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="T3j-Hb-naG">

@@ -10,24 +10,47 @@ import UIKit
 import RealmSwift   // ←追加
 import UserNotifications
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // Realmインスタンスを取得する
     let realm = try! Realm()  // ←追加
     
-    // DB内のタスクが格納されるリスト。
-    // 日付の近い順でソート：昇順
-    // 以降内容をアップデートするとリスト内は自動的に更新される。
-    var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: true)  // ←追加
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
+        //プレースホルダの指定
+        searchBar.placeholder = "検索文字列を入力してください"
     }
+    
+    
+    // DB内のタスクが格納されるリスト。
+    // 日付の近い順でソート：昇順
+    // 以降内容をアップデートするとリスト内は自動的に更新される。
+    // カテゴリーのフィルターを追加
+    var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: true)
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+        if let text = searchBar.text {
+            if text != "" {
+                taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: true).filter("category = %@", text)
+            } else {
+                taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: true)
+            }
+            tableView.reloadData()
+        }
+    }
+    
+    
     
     // データの数（＝セルの数）を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,6 +85,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return .delete
     }
     
+    
     // Delete ボタンが押された時に呼ばれるメソッド
     internal func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // --- ここから ---
@@ -89,6 +113,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         } // --- ここまで変更 ---
     }
+    
+
     
     
     // segue で画面遷移する時に呼ばれる
